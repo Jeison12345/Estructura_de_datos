@@ -53,6 +53,21 @@ char* invertir_cadena_apuntada(char *cadena){
     return cadena_invertida;
 }
 
+int* invertir_vector(int vector[], int longitud){
+/**
+ * @brief Invierte un vector
+ * @param vector[] Vector de enteros
+ * @param longitud Longitud del vector
+ * @return int* Vector invertido
+ */
+
+    int *vector_invertido = (int*) malloc(longitud * sizeof(int));
+    for(int i = 0; i < longitud; i++){
+        vector_invertido[i] = vector[longitud - i - 1];
+    }
+    return vector_invertido;
+}
+
 int main(){
     int vector[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
     int longitud = sizeof(vector)/sizeof(vector[0]);
@@ -63,5 +78,12 @@ int main(){
     scanf("%i", &numero);
     printf("El numero %i %s esta en el vector\n", numero, encontrar_numero(vector, longitud, numero) ? "si" : "no");
     printf("La cadena invertida es: %s\n", invertir_cadena_apuntada(cadena));
+    printf("El vector invertido es: ");
+    int *vector_invertido = invertir_vector(vector, longitud);
+    for(int i = 0; i < longitud; i++){
+        printf("%i ", vector_invertido[i]);
+    }
+    printf("\n");
+    free(vector_invertido);
     return 0;
 }
