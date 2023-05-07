@@ -68,6 +68,23 @@ int* invertir_vector(int vector[], int longitud){
     return vector_invertido;
 }
 
+int ultima_posicion_numero(int vector[], int longitud, int numero){
+/**
+ * @brief Devuelve la ultima posicion de un numero en un vector
+ * @param vector[] Vector de enteros
+ * @param longitud Longitud del vector
+ * @param numero Numero a buscar
+ * @return int Ultima posicion del numero en el vector
+ */
+
+    for(int i = longitud - 1; i >= 0; i--){
+        if(vector[i] == numero){
+            return i;
+        }
+    }
+    return -1;
+}
+
 int main(){
     int vector[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
     int longitud = sizeof(vector)/sizeof(vector[0]);
@@ -78,6 +95,7 @@ int main(){
     scanf("%i", &numero);
     printf("El numero %i %s esta en el vector\n", numero, encontrar_numero(vector, longitud, numero) ? "si" : "no");
     printf("La cadena invertida es: %s\n", invertir_cadena_apuntada(cadena));
+    printf("La ultima posicion del numero %i en el vector es: %i\n", numero, ultima_posicion_numero(vector, longitud, numero));
     printf("El vector invertido es: ");
     int *vector_invertido = invertir_vector(vector, longitud);
     for(int i = 0; i < longitud; i++){
